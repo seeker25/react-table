@@ -88,6 +88,7 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
       pivotValKey,
       pivotBy,
       subRowsKey,
+	  expanderKey,
       aggregatedKey,
       originalKey,
       indexKey,
@@ -149,8 +150,8 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
           ...row,
           _viewIndex: index,
         }
-        const newPath = path.concat([i])
-        if (rowWithViewIndex[subRowsKey] && _.get(expanded, newPath)) {
+        const newPath = [];
+        if (rowWithViewIndex[subRowsKey] && _.get(expanded, row[expanderKey])) {
           [rowWithViewIndex[subRowsKey], index] = recurseRowsViewIndex(
             rowWithViewIndex[subRowsKey],
             newPath,
@@ -476,7 +477,7 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
         groupedByPivot: row[groupedByPivotKey],
         subRows: row[subRowsKey],
       }
-      const isExpanded = _.get(expanded, rowInfo.row.TransferNumber)
+      const isExpanded = _.get(expanded, ,rowInfo.row[expanderKey]);
       const trGroupProps = getTrGroupProps(finalState, rowInfo, undefined, this)
       const trProps = _.splitProps(getTrProps(finalState, rowInfo, undefined, this))
       return (
@@ -528,9 +529,9 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
               const onExpanderClick = e => {
                 let newExpanded = _.clone(expanded)
                 if (isExpanded) {
-                  newExpanded = _.set(newExpanded, cellInfo.row.TransferNumber, false)
+                  newExpanded = _.set(newExpanded, cellInfo.row[expanderKey], false)
                 } else {
-                  newExpanded = _.set(newExpanded, cellInfo.row.TransferNumber, {})
+                  newExpanded = _.set(newExpanded, cellInfo.row[expanderKey], {})
                 }
 
                 return this.setStateWithData(

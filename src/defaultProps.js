@@ -80,6 +80,7 @@ export default {
   pivotValKey: '_pivotVal',
   pivotIDKey: '_pivotID',
   subRowsKey: '_subRows',
+  expanderKey: '_expander',
   aggregatedKey: '_aggregated',
   nestingLevelKey: '_nestingLevel',
   originalKey: '_original',
