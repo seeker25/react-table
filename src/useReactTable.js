@@ -77,6 +77,7 @@ const propTypes = {
 
   defaultSortDesc: PropTypes.bool,
   disableMultiSort: PropTypes.bool,
+  disableSubrowSort: PropTypes.bool,
   subRowsKey: PropTypes.string,
   expandedKey: PropTypes.string,
   userAggregations: PropTypes.object,
@@ -109,6 +110,7 @@ export default function useReactTable (props) {
     disableFilters,
     defaultSortDesc,
     disableMultiSort,
+	disableSubrowSort,
     subRowsKey = 'subRows',
     expandedKey = 'expanded',
     filterFn = defaultFilterFn,
@@ -196,6 +198,7 @@ export default function useReactTable (props) {
     orderByFn,
     sortByFn,
     manualSorting,
+	excludeSubrows
   })
 
   const rows = useExpandedRows({

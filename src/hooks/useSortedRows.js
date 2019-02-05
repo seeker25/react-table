@@ -8,6 +8,7 @@ export default function useSortedRows ({
   orderByFn,
   sortByFn,
   manualSorting,
+  disableSubrowSort
 }) {
   return useMemo(
     () => {
@@ -44,7 +45,7 @@ export default function useSortedRows ({
 
         // TODO: this should be optimized. Not good to loop again
         sortedData.forEach(row => {
-          if (!row.subRows) {
+          if (!row.subRows || disableSubrowSort) {
             return
           }
           row.subRows = sortData(row.subRows)
@@ -55,6 +56,6 @@ export default function useSortedRows ({
 
       return sortData(rows)
     },
-    [rows, columns, sortBy, manualSorting]
+    [rows, columns, sortBy, manualSorting, disableSubrowSort]
   )
 }
