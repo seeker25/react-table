@@ -476,7 +476,7 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
         groupedByPivot: row[groupedByPivotKey],
         subRows: row[subRowsKey],
       }
-      const isExpanded = _.get(expanded, rowInfo.nestingPath)
+      const isExpanded = _.get(expanded, rowInfo.row.TransferNumber)
       const trGroupProps = getTrGroupProps(finalState, rowInfo, undefined, this)
       const trProps = _.splitProps(getTrProps(finalState, rowInfo, undefined, this))
       return (
@@ -528,9 +528,9 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
               const onExpanderClick = e => {
                 let newExpanded = _.clone(expanded)
                 if (isExpanded) {
-                  newExpanded = _.set(newExpanded, cellInfo.nestingPath, false)
+                  newExpanded = _.set(newExpanded, cellInfo.row.TransferNumber, false)
                 } else {
-                  newExpanded = _.set(newExpanded, cellInfo.nestingPath, {})
+                  newExpanded = _.set(newExpanded, cellInfo.row.TransferNumber, {})
                 }
 
                 return this.setStateWithData(

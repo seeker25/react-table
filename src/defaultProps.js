@@ -22,6 +22,7 @@ export default {
   collapseOnPageChange: true,
   collapseOnDataChange: true,
   freezeWhenExpanded: false,
+  disableSubRowsSorting: false,
   sortable: true,
   multiSort: true,
   resizable: true,
