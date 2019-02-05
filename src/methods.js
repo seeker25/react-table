@@ -401,7 +401,7 @@ export default Base =>
       )
 
       sortedData.forEach(row => {
-        if (!row[this.props.subRowsKey]) {
+        if (!row[this.props.subRowsKey] || true) {
           return
         }
         row[this.props.subRowsKey] = this.sortData(
