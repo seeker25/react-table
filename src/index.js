@@ -477,7 +477,7 @@ export default class ReactTable extends Methods(Lifecycle(Component)) {
         groupedByPivot: row[groupedByPivotKey],
         subRows: row[subRowsKey],
       }
-      const isExpanded = _.get(expanded, ,rowInfo.row[expanderKey]);
+      const isExpanded = _.get(expanded,rowInfo.row[expanderKey]);
       const trGroupProps = getTrGroupProps(finalState, rowInfo, undefined, this)
       const trProps = _.splitProps(getTrProps(finalState, rowInfo, undefined, this))
       return (
